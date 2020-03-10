@@ -1,6 +1,7 @@
 #include "node.cpp"
 #include<iostream>
 #include<assert.h>
+#include<algorithm>
 class LinkedList{
     private:
         Node *head;
@@ -125,6 +126,21 @@ void LinkedList::print(){
         sel =sel->next;
     } 
   
+}
+void LinkedList::bubble_sort(){
+    if(isempty() || (head->next == nullptr)) return;
+    for(int it=0;it<lenght()-1;it++){
+        Node *first_node = head;
+        Node *second_node = head->next;
+        while(first_node->next != nullptr){
+            if(first_node->data > second_node->data){
+                std::swap(first_node->data, second_node->data);
+            }
+            first_node = second_node;
+            second_node = first_node->next;
+                
+        }
+    }
 }
 LinkedList::~LinkedList(){
     clear();
